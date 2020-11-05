@@ -1,0 +1,88 @@
+.adminform_sec {
+    background-color: white;
+    padding: 30px;
+    margin-right: 20px;
+    border: 1px solid #d7d7d7;
+}
+.adminform_sec .form-group {
+    margin-bottom: 15px;
+}
+.adminform_sec .form-lables {
+    display: inline-block;
+    max-width: 100%;
+    margin-bottom: 5px;
+    font-weight: 700;
+}
+.adminform_sec .form-control {
+    display: block;
+    width: 100%;
+    height: 34px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    -webkit-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+}
+.admin_frm_btn {
+    font-weight: 600;
+    padding: 10px 20px;
+    font-size: 14px;
+    background-color: purple;
+    border: none;
+    color: white;
+    text-transform: uppercase;
+}
+.adminform_sec #pverify_config_form {
+    padding-bottom: 10px;
+}
+.adminform_sec .alert-success {
+    color: #3c763d;
+    background-color: #dff0d8;
+    border-color: #d6e9c6;
+}
+.adminform_sec .alert-danger {
+    color: #a94442;
+    background-color: #f2dede;
+    border-color: #ebccd1;
+}
+.adminform_sec .alert{
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+}
+.adminform_sec .alert .close {
+    position: relative;
+    top: -2px;
+    float: right;
+    font-size: 21px;
+    font-weight: 700;
+    line-height: 1;
+    color: #000;
+    text-shadow: 0 1px 0 #fff;
+    opacity: .5;
+    text-decoration: none;
+}
+.alert_info {
+    display: none;
+}
+.shortcode_info_sec {
+    border-top: 1px dashed #c3c2c2;
+}
+.shortcode_sec_class_hide {
+    display: none;
+}
+.shortcode_sec_class_show{
+    display: block;
+}

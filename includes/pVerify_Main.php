@@ -59,7 +59,7 @@ if( !class_exists('pVerify_Main') ){
 		public static function activate() {
 			$plugin_path = dirname( PVERIFY_PLUGIN_FILE );
 
-			require_once $plugin_path . '/include/pVerify-db-config.php';
+			require_once $plugin_path . '/includes/pVerify-db-config.php';
 			$db_obj = new pVerify_DB_Config();
 			$db_obj->fn_create_pVerify_tables();
 		}
@@ -85,7 +85,7 @@ if( !class_exists('pVerify_Main') ){
 		    global $table_prefix, $wpdb;
 		    
 		    $plugin_path = dirname( PVERIFY_PLUGIN_FILE );
-		    require_once $plugin_path . '/include/pVerify-db-config.php';
+		    require_once $plugin_path . '/includes/pVerify-db-config.php';
 			$db_obj = new pVerify_DB_Config();
 			$tblname = $db_obj->pverify_pl_table;
 			$pverify_pl_table = $table_prefix . "$tblname";
@@ -101,7 +101,7 @@ if( !class_exists('pVerify_Main') ){
 		 */
 		protected function loadLibraries() {
 
-			require_once $this->plugin_path . 'include/pVerify-db-config.php';
+			require_once $this->plugin_path . 'includes/pVerify-db-config.php';
 		}
 
 		public function fn_pVerify_admin_menu_callback(){
@@ -134,7 +134,7 @@ if( !class_exists('pVerify_Main') ){
 				$client_secret = $result[0]->client_secret;
 			}
 			
-			require_once( $this->plugin_path. 'include/view/admin/pVerify-auth.php');
+			require_once( $this->plugin_path. 'includes/view/admin/pVerify-auth.php');
 		}
         
         public function fn_pVerify_enqueue_admin_scripts(){
@@ -161,13 +161,13 @@ if( !class_exists('pVerify_Main') ){
 
 		public function fn_pVerify_widget_shortcode() {
 			ob_start();
-			require_once( $this->plugin_path. 'include/shortcodes/estimate_widget.php');
+			require_once( $this->plugin_path. 'includes/shortcodes/estimate_widget.php');
 			return ob_get_clean();
 		}
 
 		public function fn_pVerify_eligibility_widget_shortcode() {
 			ob_start();
-			require_once( $this->plugin_path. 'include/shortcodes/eligibility_widget.php');			
+			require_once( $this->plugin_path. 'includes/shortcodes/eligibility_widget.php');			
 			return ob_get_clean();
 		}
 

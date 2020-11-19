@@ -160,14 +160,113 @@ if( !class_exists('pVerify_Main') ){
 		}
 
 		public function fn_pVerify_widget_shortcode() {
+						
+			global $wpdb;
+
+			$iframe_url = "";
+		    $err_msg = "";
+
+			$tblname = $wpdb->prefix.'pverify_pl';
+			$result = $wpdb->get_results( "SELECT * FROM $tblname ORDER BY id ASC LIMIT 1 ");
+					
+			$clientApiId = "";
+			$clientSecret = "";
+
+			if(count($result) > 0){
+						
+				$clientApiId = $result[0]->client_api_id;	
+				$clientSecret = $result[0]->client_secret;			
+			}
+
+			if(!empty($clientApiId) && !empty($clientSecret)){
+						
+				$endpoint = "https://premium.pverify.com/Widget/Setup";			
+				$body = array(
+					'clientApiId'  => $clientApiId,
+					'clientSecret' => $clientSecret,
+				);
+						
+				$options = array(
+				    'method'  	=> 'POST',
+					'body'      => $body,
+				    'headers'   => array("Content-Type: application/json", "Cookie: GCLB=COSQiI3D4s-MnQE")
+				);
+						
+				$responsewp = wp_remote_post($endpoint, $options);
+				$responsewp_body = wp_remote_retrieve_body($responsewp);
+				$response_data = json_decode($responsewp_body);
+						
+				$res_data_array = array();
+				$TransactionSetupId = "";
+				$res_data_array = (array)$response_data;
+				if( count($res_data_array) > 0 ){
+					$TransactionSetupId = $res_data_array['TransactionSetupId'];
+					$err_msg = $res_data_array['Message'];
+				}				
+						
+				if(!empty($TransactionSetupId)){
+					$iframe_url = "https://premium.pverify.com/Component/EstimateInquiry?SetupId=".$TransactionSetupId;
+				}
+			}
+
 			ob_start();
-			require_once( $this->plugin_path. 'includes/shortcodes/estimate_widget.php');
+			require_once( $this->plugin_path. 'includes/view/shortcodes/estimate_widget.php');
 			return ob_get_clean();
 		}
 
 		public function fn_pVerify_eligibility_widget_shortcode() {
+			
+			global $wpdb;
+	
+			$iframe_url = "";
+		    $err_msg = "";
+
+			$tblname = $wpdb->prefix.'pverify_pl';
+			$result = $wpdb->get_results( "SELECT * FROM $tblname ORDER BY id ASC LIMIT 1 ");
+					
+			$clientApiId = "";
+			$clientSecret = "";
+
+			if(count($result) > 0){
+				
+				$clientApiId = $result[0]->client_api_id;	
+				$clientSecret = $result[0]->client_secret;			
+			}
+
+			if(!empty($clientApiId) && !empty($clientSecret)){				
+							
+				$endpoint = "https://premium.pverify.com/Widget/Setup";			
+				$body = array(
+					'clientApiId'  => $clientApiId,
+					'clientSecret' => $clientSecret,
+				);
+						
+				$options = array(
+					'method'  	=> 'POST',
+					'body'      => $body,
+					'headers'   => array("Content-Type: application/json", "Cookie: GCLB=COSQiI3D4s-MnQE")
+				);
+				
+				$responsewp = wp_remote_post($endpoint, $options);
+				$responsewp_body = wp_remote_retrieve_body($responsewp);
+				$response_data = json_decode($responsewp_body);
+						
+				$res_data_array = array();
+				$TransactionSetupId = "";
+				$res_data_array = (array)$response_data;
+
+				if( count($res_data_array) > 0 ){
+					$TransactionSetupId = $res_data_array['TransactionSetupId'];
+					$err_msg = $res_data_array['Message'];
+				}				
+						
+				if(!empty($TransactionSetupId)){
+					$iframe_url = "https://premium.pverify.com/Component/ElgInquiry?SetupId=".$TransactionSetupId;
+				}
+			}
+
 			ob_start();
-			require_once( $this->plugin_path. 'includes/shortcodes/eligibility_widget.php');			
+			require_once( $this->plugin_path. 'includes/view/shortcodes/eligibility_widget.php');			
 			return ob_get_clean();
 		}
 

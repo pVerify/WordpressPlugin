@@ -25,7 +25,7 @@ define( 'PVERIFY_PLUGIN_FILE', __FILE__ );
 /**
  * Loads the action plugin
  */
-require_once dirname( PVERIFY_PLUGIN_FILE ) . '/include/pVerify_Main.php';
+require_once dirname( PVERIFY_PLUGIN_FILE ) . '/includes/pVerify_Main.php';
 
 pVerify_Main::instance();
 

@@ -12,6 +12,10 @@ This plugin is designed to be used in conjunction with pVerify for access to our
  
 This plugin is designed to be used in conjunction with pVerify for access to our Estimator Widget. You will need an account with pVerify as a medical provider (with valid NPI) to use this service. Once your account is active, you can use this plugin.
 
+The pVerify Wordpress plugin is meant to enable use of our pVerify widget in Wordpress sites. This widget communicates with pVerify to transmit patient information to check eligibility and return patient cost estimates.
+
+Our website is available at www.pverify.com for further information. Our terms and conditions is here: https://pverify.io/terms/
+
 Use:
 
 You will need to obtain the ID/secret from pVerify and add it to the plugin interface.
@@ -36,7 +40,7 @@ Thank you
 To use pVerify Estimator Widget we need to use this shortcode [pverify-widget]
  
 = How to use eligibility-widget?
-To use pVerify Estimator Widget we need to use this shortcode [eligibility-widget]
+To use pVerify Eligibility Widget we need to use this shortcode [eligibility-widget]
  
 == Screenshots ==
  

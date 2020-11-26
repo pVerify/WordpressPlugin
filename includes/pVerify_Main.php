@@ -31,7 +31,7 @@ if( !class_exists('pVerify_Main') ){
 				self::$instance = new self;
 			}
 			return self::$instance;
-		}
+		} 
 		
 		public function __construct()
 		{

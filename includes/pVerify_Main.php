@@ -10,8 +10,6 @@ if( !class_exists('pVerify_Main') ){
 	 */
 	class pVerify_Main
 	{
-
-		public $pluginName;
 		public $plugin_file;
 		public $plugin_dir;
 		public $plugin_path;
@@ -42,12 +40,12 @@ if( !class_exists('pVerify_Main') ){
 			$this->plugin_dir  = trailingslashit( basename( $this->plugin_path ) );
 			$this->plugin_url  = str_replace( basename( $this->plugin_file ), '', plugins_url( basename( $this->plugin_file ), $this->plugin_file ) );
 
-			add_action( 'plugins_loaded', array( $this, 'plugins_loaded' ), 1 );
+			add_action('plugins_loaded', array( $this, 'plugins_loaded' ), 1);
 			add_action('admin_menu', array($this,'fn_pVerify_admin_menu_callback'));
 			add_action('admin_enqueue_scripts', array($this, 'fn_pVerify_enqueue_admin_scripts'));
 			add_action('wp_enqueue_scripts', array($this, 'fn_pVerify_enqueue_front_scripts'));
-			add_action( 'init', array($this, 'fn_pVerify_add_shortcode') );
-			add_action( "wp_ajax_submit_verifyKeysform", array($this,"fn_pVerify_submit_verifyKeysform" ));
+			add_action('init', array($this, 'fn_pVerify_add_shortcode'));
+			add_action('wp_ajax_submit_verifyKeysform', array($this,'fn_pVerify_submit_verifyKeysform'));
 		}
 		
 		/**

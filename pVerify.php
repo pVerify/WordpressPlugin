@@ -33,4 +33,4 @@ register_activation_hook( PVERIFY_PLUGIN_FILE, array( 'pVerify_Main', 'activate'
 
 register_deactivation_hook( PVERIFY_PLUGIN_FILE, array( 'pVerify_Main', 'deactivate' ) );
 
-register_uninstall_hook( PVERIFY_PLUGIN_FILE, array( 'pVerify_Main', 'uninstall' ) );  
+register_uninstall_hook( PVERIFY_PLUGIN_FILE, array( 'pVerify_Main', 'uninstall' ) ); 

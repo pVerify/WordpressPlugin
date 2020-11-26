@@ -1,4 +1,6 @@
 === pVerify ===
+Contributors: robdejournett
+Donate link: later
 Requires at least: 4.7
 Tested up to: 5.5.3
 Requires PHP: 7.2
@@ -48,4 +50,8 @@ To use pVerify Eligibility Widget we need to use this shortcode [eligibility-wid
  
 == Changelog ==
  
+= 1.0 =
+
+== Upgrade Notice ==
+
 = 1.0 =

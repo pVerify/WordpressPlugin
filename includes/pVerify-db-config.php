@@ -10,13 +10,7 @@ if( !class_exists('pVerify_DB_Config') ){
 	 */
 	class pVerify_DB_Config
 	{
-
-		public $pluginName;
-		public $plugin_file;
-		public $plugin_dir;
-		public $plugin_path;
-		public $plugin_url;
-		
+				
 		public $pverify_pl_table;
 		/**
 		 * Static Singleton Holder
@@ -37,11 +31,7 @@ if( !class_exists('pVerify_DB_Config') ){
 		}
 		
 		public function __construct()
-		{
-			$this->plugin_file = PVERIFY_PLUGIN_FILE;
-			$this->plugin_path = trailingslashit( dirname( $this->plugin_file ) );
-			$this->plugin_dir  = trailingslashit( basename( $this->plugin_path ) );
-			$this->plugin_url  = str_replace( basename( $this->plugin_file ), '', plugins_url( basename( $this->plugin_file ), $this->plugin_file ) );
+		{			
 			$this->pverify_pl_table = 'pverify_pl';
 		}
 

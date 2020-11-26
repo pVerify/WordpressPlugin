@@ -31,7 +31,7 @@ if( !class_exists('pVerify_Main') ){
 				self::$instance = new self;
 			}
 			return self::$instance;
-		} 
+		}
 		
 		public function __construct()
 		{
@@ -275,9 +275,8 @@ if( !class_exists('pVerify_Main') ){
 			$client_api_id = sanitize_text_field( $posted_data['client_api_id'] );
 			$client_secret = sanitize_text_field( $posted_data['client_secret'] );
 			$response = array('status' => 'failed', 'msg' => 'Something went wrong, please try again after some time.');
-
+			
 			if(empty($client_api_id) || empty($client_secret)){
-				
 				echo json_encode($response);
 				exit();
 			}
@@ -288,15 +287,18 @@ if( !class_exists('pVerify_Main') ){
 			$pverify_pl_table = $table_prefix . "$tblname";
 
 			if(!empty($record_id)){
-
 				$updated = $wpdb->query($wpdb->prepare("UPDATE $pverify_pl_table SET client_api_id='$client_api_id', client_secret='$client_secret' WHERE id = $record_id"));
-				if($updated){
+				
+				if($updated != 0){
 					$response = array();
 					$response['status'] = "success";
 					$response['msg'] = "Details updated successfully!!";
+				}else{
+					$response['status'] = "failed";
+					$response['msg'] = "Please enter different values to update the record!!";
 				}
-			}else{
 				
+			}else{
 				$insertq = $wpdb->query("INSERT INTO $pverify_pl_table (client_api_id, client_secret) VALUES ('$client_api_id', '$client_secret')"  );
 				$response = array();
 				if($insertq){
@@ -307,7 +309,7 @@ if( !class_exists('pVerify_Main') ){
 					$response['msg'] = "Details not saved.";
 				}
 			}
-
+			
 			echo json_encode($response);
 			exit();
 		}

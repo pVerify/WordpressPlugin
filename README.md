@@ -1,5 +1,5 @@
 === pVerify ===
-Contributors: robdejournett
+Contributors: gibbie99
 Donate link: later
 Requires at least: 4.7
 Tested up to: 5.5.3

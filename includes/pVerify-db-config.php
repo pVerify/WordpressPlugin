@@ -55,3 +55,4 @@ if( !class_exists('pVerify_DB_Config') ){
 		}
     }
 }
+

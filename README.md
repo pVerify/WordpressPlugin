@@ -54,4 +54,4 @@ To use pVerify Eligibility Widget we need to use this shortcode [eligibility-wid
 
 == Upgrade Notice ==
 
-= 1.0 =
+= 1.0 = 

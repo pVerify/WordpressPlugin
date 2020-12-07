@@ -41,6 +41,8 @@ if( !class_exists('pVerify_Main') ){
 			$this->plugin_url  = str_replace( basename( $this->plugin_file ), '', plugins_url( basename( $this->plugin_file ), $this->plugin_file ) );
 
 			add_action('plugins_loaded', array( $this, 'plugins_loaded' ), 1);
+			add_filter( 'plugin_action_links', array($this,'fn_add_settings_link_plugin'), 10, 4 );
+			add_filter( 'network_admin_plugin_action_links', array($this,'fn_add_settings_link_plugin'), 10, 4 );
 			add_action('admin_menu', array($this,'fn_pVerify_admin_menu_callback'));
 			add_action('admin_enqueue_scripts', array($this, 'fn_pVerify_enqueue_admin_scripts'));
 			add_action('wp_enqueue_scripts', array($this, 'fn_pVerify_enqueue_front_scripts'));
@@ -100,6 +102,18 @@ if( !class_exists('pVerify_Main') ){
 		protected function loadLibraries() {
 
 			require_once $this->plugin_path . 'includes/pVerify-db-config.php';
+		}
+
+		public function fn_add_settings_link_plugin( $actions, $plugin_file, $plugin_data, $context ) {
+ 
+		    // Add settings action link for plugins
+		    if ( !array_key_exists( 'settings', $actions ) && $plugin_file == "WordpressPlugin-main/pVerify.php" && current_user_can( 'manage_options' ) ){
+
+		    	$url = admin_url( "admin.php?page=pverify" );
+		    	$actions['settings'] = sprintf( '<a href="%s">%s</a>', $url, __( 'Settings', 'pVerify' ) );
+		    }
+		    
+		    return $actions;
 		}
 
 		public function fn_pVerify_admin_menu_callback(){
@@ -270,10 +284,9 @@ if( !class_exists('pVerify_Main') ){
 
 		public function fn_pVerify_submit_verifyKeysform() {
 
-			$posted_data   = $_POST;
-			$record_id     = sanitize_text_field( $posted_data['record_id'] );
-			$client_api_id = sanitize_text_field( $posted_data['client_api_id'] );
-			$client_secret = sanitize_text_field( $posted_data['client_secret'] );
+			$record_id = sanitize_text_field( $_POST['record_id'] );
+			$client_api_id = sanitize_text_field( $_POST['client_api_id'] );
+			$client_secret = sanitize_text_field( $_POST['client_secret'] );
 			$response = array('status' => 'failed', 'msg' => 'Something went wrong, please try again after some time.');
 			
 			if(empty($client_api_id) || empty($client_secret)){
